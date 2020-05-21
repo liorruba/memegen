@@ -1,0 +1,74 @@
+<html>
+<head>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<p>
+		<label for="imageLoader">טען תמונה:</label>
+		<input type="file" accept="image/x-png,image/jpeg" id="imageLoader" name="imageLoader"/>
+		<button id="clearCanvasBtn" name="clearCanvasBtn"> נקה </button>
+	</p>
+	<p class="memeform">
+		<label for="title">כותרת: </label>
+		<input id="title" type="text" dir="rtl" value="לורם איפסום">
+	</p>
+	<p class="memeform">
+		<label for="subtitle">כותרת משנה: </label>
+		<textarea id="subtitle" rows="2" cols="50"> אין אדם רוצה בכאב ככאב בלבד, או רוצה בו ומחפש אותו על מנת להרגישו רק כי הוא כאב</textarea>
+	</p>
+	<p class="memeform">
+		<label for="credit"> קרדיט: </label>
+		<textarea id="credit" rows="2" cols="50"> צילום: יוכבד וקסמן, המכון לחקר יבחושי הביצה</textarea>
+		<select id="creditColor" name="creditColor">
+			<option value="" disabled selected>צבע לקרדיט</option>
+			<option value="white">לבן</option>
+			<option value="black">שחור</option>
+		</select>
+	</p>
+	<p class="memeform">
+		<label for="logosCombo">לוגו:</label>
+		<select id="logosCombo" name="logosCombo">
+			<option value="astronomy">אסטרונומיה</option>
+			<option value="biology">ביולוגיה</option>
+			<option value="chemistry">כימיה</option>
+			<option value="engineering">הנדסה</option>
+			<option value="math">מתמטיקה</option>
+			<option value="medicine">רפואה</option>
+			<option value="misc">ספר</option>
+			<option value="physics">פיזיקה</option>
+			<option value="research">מחקר</option>
+			<option value="ecology">כדור-הארץ</option>
+		</select>
+		<select id="logoColor" name="logoColor">
+			<option value="" disabled selected>צבע ללוגו</option>
+			<option value="white">לבן</option>
+			<option value="black">שחור</option>
+		</select>
+		<br><br>
+		<label for="bannerCombo">באנר:</label>
+		<select id="bannerCombo" name="bannerCombo">
+			<option value="empty">ללא באנר</option>
+			<option value="fact_white">עובדה בקטנה (לבן)</option>
+			<option value="fact_black">עובדה בקטנה (שחור)</option>
+			<option value="guest_white">פוסט אורח (לבן)</option>
+			<option value="guest_black">
+			פוסט אורח (שחור)</option>
+			<option value="math_bektana_white">מתמטיקה בקטנה (לבן)</option>
+			<option value="math_bektana_black">מתמטיקה בקטנה (שחור)</option>
+			<option value="oven">חם מהתנור</option>
+		</select>
+		<br><br>
+		<button id="generateBtn" name="generateBtn" style="font-size: 20px; color: black; background-color: white;"> תן לי במם! </button>
+		<br><br>
+		<button id="downloadBtn" name="downloadBtn" style="font-size: 20px; color: white; background-color: black;"> להוריד </button>
+	</p>
+
+	<p class="canvases">
+		<canvas height=2068; width=2068; id="fbMemeCanvas"> </canvas> 
+		&emsp;
+		<canvas height=1350; width=2400; id="websiteImageCanvas"> </canvas> 
+	</p>
+
+	<script src="image_proc.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+#websiteImageCanvas {
+  outline: black 1px solid;
+  width: 40%;
+}
+
+#fbMemeCanvas {
+  outline: black 1px solid;
+  width: 25%;
+}
+
+p {
+	direction: rtl;
+}
+
+.memeform * {
+  vertical-align: middle;
+}
+
+.canvases * {
+	vertical-align: top;
+}
