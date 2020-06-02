@@ -45,7 +45,7 @@ function loadImage(e){
         }
         img.src = event.target.result;
     }
-    reader.readAsDataURL(e.target.files[0]);  
+    reader.readAsDataURL(e.target.files[0]);
 }
 
 // Clear canvas
@@ -67,7 +67,7 @@ function generateMeme(e){
 
     if (existBar) {
         drawImg();
-    }    
+    }
 
     drawBlackBar(blackBarRatio);
     drawText(blackBarRatio);
@@ -120,9 +120,7 @@ function drawText(blackBarRatio) {
         ctxWebsite.fillStyle = "black";
     }
     ctxFb.font = "35px Alef";
-    ctxFb.rotate(-90 * Math.PI / 180);
-    ctxFb.fillText(creditText, -canvasFb.width * 0.01, canvasFb.height * 0.02);
-    ctxFb.rotate(90 * Math.PI / 180);
+    ctxFb.fillText(creditText,  ctxFb.measureText(creditText).width + 40, canvasFb.height * 0.73);
     ctxWebsite.font = "20px Alef";
     ctxWebsite.fillText(creditText, canvasWebsite.width * 0.99, canvasWebsite.height * 0.97);
 }
