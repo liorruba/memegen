@@ -104,7 +104,7 @@ function drawText(blackBarRatio) {
     var creditColor = document.getElementById('creditColor').value;
 
     // Title and substitle:
-    ctxFb.font = "bold 160px Alef";
+    ctxFb.font = "bold 140px Alef";
     ctxFb.fillStyle = "white";
     ctxFb.fillText(titleText, canvasFb.width * 0.98, canvasFb.height * blackBarRatio * 1.12);
     ctxFb.font = "85px Alef";
