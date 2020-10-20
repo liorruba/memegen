@@ -63,7 +63,7 @@ function clearInputbox(){
 
 // Generate the meme composed of the image and the black bar
 function generateMeme(e){
-    var blackBarRatio = 0.75; // Ratio of black bar to meme height
+    var blackBarRatio = 0.79; // Ratio of meme height to black bar
 
     if (existBar) {
         drawImg();
@@ -104,11 +104,11 @@ function drawText(blackBarRatio) {
     var creditColor = document.getElementById('creditColor').value;
 
     // Title and substitle:
-    ctxFb.font = "bold 140px Alef";
+    ctxFb.font = "bold 150px Alef";
     ctxFb.fillStyle = "white";
-    ctxFb.fillText(titleText, canvasFb.width * 0.98, canvasFb.height * blackBarRatio * 1.12);
-    ctxFb.font = "85px Alef";
-    wrapText(ctxFb, subtitleText, canvasFb.width * 0.98, canvasFb.height * blackBarRatio * 1.2, canvasFb.width * 0.78, 100);
+    ctxFb.fillText(titleText, canvasFb.width * 0.98, canvasFb.height * blackBarRatio * 1.095);
+    ctxFb.font = "80px Alef";
+    wrapText(ctxFb, subtitleText, canvasFb.width * 0.98, canvasFb.height - 160, canvasFb.width * 0.78, 100);
 
     // Credit color:
     if (creditColor === "white") {
@@ -120,7 +120,9 @@ function drawText(blackBarRatio) {
         ctxWebsite.fillStyle = "black";
     }
     ctxFb.font = "35px Alef";
-    ctxFb.fillText(creditText,  ctxFb.measureText(creditText).width + 40, canvasFb.height * 0.73);
+    ctxFb.rotate(-90 * Math.PI / 180);
+    ctxFb.fillText(creditText,  -canvasFb.height * 0.25, canvasFb.width * 0.02);
+    ctxFb.rotate(90 * Math.PI / 180);
     ctxWebsite.font = "20px Alef";
     ctxWebsite.fillText(creditText, canvasWebsite.width * 0.99, canvasWebsite.height * 0.97);
 }
@@ -136,12 +138,16 @@ function drawLogo(blackBarRatio) {
         logoColor = "white";
     }
 
+    // Always set the logo color to white for the fb meme
     logoFb.src = "logos/transparent-" + logoComboVal + "_white.png";
     logoWebsite.src = "logos/transparent-" + logoComboVal + "_" + logoColor + ".png";
+    websiteLogoAspectRatio = 1.127
 
     logoFb.onload = function(){
-        ctxFb.drawImage(logoFb, 0, 0, logoFb.width, logoFb.height, -10, canvasFb.height * blackBarRatio * 0.99, canvasFb.width*0.25, canvasFb.width*0.25*1.127);
-        ctxWebsite.drawImage(logoWebsite, 0, 0, logoWebsite.width, logoWebsite.height, -10, canvasWebsite.height * blackBarRatio * 0.82, canvasWebsite.width*0.2, canvasWebsite.width*0.2*1.127);
+        ctxFb.drawImage(logoFb, 0, 0, logoFb.width, logoFb.height, -15, canvasFb.width  - 405,
+          canvasFb.width * 0.18, canvasFb.height * 0.2);
+        ctxWebsite.drawImage(logoWebsite, 0, 0, logoWebsite.width, logoWebsite.height, -10,
+          canvasWebsite.height * blackBarRatio * 0.9, canvasWebsite.width * 0.15, canvasWebsite.width * 0.15 * websiteLogoAspectRatio);
     }
 }
 
@@ -157,7 +163,7 @@ function drawBanner(blackBarRatio) {
         banner.src = "logos/transparent-" + bannerComboVal + ".png"
         banner.onload = function(){
             ctxFb.rotate(-10 * Math.PI / 180);
-            ctxFb.drawImage(banner, 0, 0, banner.width, banner.height, -20, canvasFb.width*0.05, canvasFb.height*0.27, canvasFb.height*0.27*0.723);
+            ctxFb.drawImage(banner, 0, 0, banner.width, banner.height, -70, canvasFb.width*0.025, canvasFb.height*0.2, canvasFb.height*0.2*0.723);
             ctxFb.rotate(10 * Math.PI / 180);
 
             ctxWebsite.rotate(20 * Math.PI / 180);
