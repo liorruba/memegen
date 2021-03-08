@@ -14,11 +14,11 @@
 	</p>
 	<p class="memeform">
 		<label for="subtitle">כותרת משנה: </label>
-		<textarea id="subtitle" rows="2" cols="50"> אין אדם רוצה בכאב ככאב בלבד, או רוצה בו ומחפש אותו על מנת להרגישו רק כי הוא כאב</textarea>
+		<textarea id="subtitle" rows="2" cols="50">אין אדם רוצה בכאב ככאב בלבד, או רוצה בו ומחפש אותו על מנת להרגישו רק כי הוא כאב</textarea>
 	</p>
 	<p class="memeform">
 		<label for="credit"> קרדיט: </label>
-		<textarea id="credit" rows="2" cols="50"> צילום: יוכבד וקסמן, המכון לחקר יבחושי הביצה</textarea>
+		<textarea id="credit" rows="2" cols="50">צילום: יוכבד וקסמן, המכון לחקר יבחושי הביצה</textarea>
 		<select id="creditColor" name="creditColor">
 			<option value="" disabled selected>צבע לקרדיט</option>
 			<option value="white">לבן</option>
@@ -61,12 +61,21 @@
 		<button id="generateBtn" name="generateBtn" style="font-size: 20px; color: black; background-color: white;"> תן לי במם! </button>
 		<br><br>
 		<button id="downloadBtn" name="downloadBtn" style="font-size: 20px; color: white; background-color: black;"> להוריד </button>
+		
+		<br><br>
+		&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+		<button id="moveUpBtn" name="moveUpBtn" style="padding: 2px 20px; font-size: 20px; color: white; background-color: black;"> &#x2191 </button>
+		<br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+		<button id="moveRightBtn" name="moveRightBtn" style="padding: 2px 10px; font-size: 20px; color: white; background-color: black;"> &#x2192 </button>
+		<button id="moveLeftBtn" name="moveLeftBtn" style="padding: 2px 10px; font-size: 20px; color: white; background-color: black;"> &#x2190 </button>
+		<br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+		<button id="moveDownBtn" name="moveDownBtn" style="padding: 2px 20px;; font-size: 20px; color: white; background-color: black;"> &#x2193 </button>
 	</p>
 
 	<p class="canvases">
-		<canvas height=2068; width=2068; id="fbMemeCanvas"> </canvas> 
+		<canvas height=2068; width=2068; id="fbMemeCanvas"> </canvas>
 		&emsp;
-		<canvas height=1350; width=2400; id="websiteImageCanvas"> </canvas> 
+		<canvas height=1350; width=2400; id="websiteImageCanvas"> </canvas>
 	</p>
 
 	<script src="image_proc.js"></script>

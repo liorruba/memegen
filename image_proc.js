@@ -12,6 +12,11 @@ var clearCanvasBtn = document.getElementById('clearCanvasBtn');
 var generateBtn = document.getElementById('generateBtn');
 var downloadBtn = document.getElementById('downloadBtn');
 
+var moveLeftBtn = document.getElementById('moveLeftBtn');
+var moveRightBtn = document.getElementById('moveRightBtn');
+var moveUpBtn = document.getElementById('moveUpBtn');
+var moveDownBtn = document.getElementById('moveDownBtn');
+
 // Flag if bar was already created:
 var existBar = false;
 
@@ -19,6 +24,8 @@ var existBar = false;
 var img = new Image();
 var imgDefaultFB = new Image();
 var imgDefaultWebsite = new Image();
+var image_x;
+var image_y;
 
 // Always show a default meme on startup:
 imgDefaultFB.onload = function(){
@@ -35,9 +42,60 @@ clearCanvasBtn.addEventListener('click', clearInputbox, false);
 generateBtn.addEventListener('click', generateMeme, false);
 downloadBtn.addEventListener('click', downloadMemes, false);
 
+moveLeftBtn.addEventListener('click', moveImageLeft, false);
+moveRightBtn.addEventListener('click', moveImageRight, false);
+moveUpBtn.addEventListener('click', moveImageUp, false);
+moveDownBtn.addEventListener('click', moveImageDown, false);
+
+// First, disable all controls:
+disableAll();
+
+// Enable all controls
+function enableAll() {
+  moveLeftBtn.disabled = false;
+  moveRightBtn.disabled = false;
+  moveUpBtn.disabled = false;
+  moveDownBtn.disabled = false;
+  clearCanvasBtn.disabled = false;
+  generateBtn.disabled = false;
+  downloadBtn.disabled = false;
+
+  document.getElementById('title').disabled = false;
+  document.getElementById('subtitle').disabled = false;
+  document.getElementById('credit').disabled = false;
+  document.getElementById('creditColor').disabled = false;
+
+  document.getElementById('logoColor').disabled = false;
+  document.getElementById('logosCombo').disabled = false;
+  document.getElementById('bannerCombo').disabled = false;
+
+}
+
+// Enable all controls
+function disableAll() {
+  moveLeftBtn.disabled = true;
+  moveRightBtn.disabled = true;
+  moveUpBtn.disabled = true;
+  moveDownBtn.disabled = true;
+  clearCanvasBtn.disabled = true;
+  generateBtn.disabled = true;
+  downloadBtn.disabled = true;
+
+  document.getElementById('title').disabled = true;
+  document.getElementById('subtitle').disabled = true;
+  document.getElementById('credit').disabled = true;
+  document.getElementById('creditColor').disabled = true;
+
+  document.getElementById('logoColor').disabled = true;
+  document.getElementById('logosCombo').disabled = true;
+  document.getElementById('bannerCombo').disabled = true;
+}
+
 // Load image from file using file input field
 function loadImage(e){
-    // clearCanvas();
+    // Enable all controls
+    enableAll();
+
     var reader = new FileReader();
     reader.onload = function(event){
         img.onload = function() {
@@ -49,10 +107,20 @@ function loadImage(e){
 }
 
 // Clear canvas
-function clearCanvas(e){
+function clearFbCanvas(e){
     existBar = false;
     ctxFb.clearRect(0, 0, ctxFb.canvas.width, ctxFb.canvas.height);
+}
+
+function clearWebsiteCanvas(e){
+    existBar = false;
     ctxWebsite.clearRect(0, 0, ctxWebsite.canvas.width, ctxWebsite.canvas.height);
+}
+
+function clearCanvas(e){
+    existBar = false;
+    clearFbCanvas(e)
+    clearWebsiteCanvas(e)
 }
 
 // Clear input box
@@ -86,7 +154,55 @@ function drawImg() {
     }
 
     ctxWebsite.drawImage(img, 0, 0, img.width, img.width/(1220.0/675.0), 0,0,canvasWebsite.width, canvasWebsite.height);
+
+    image_x = 0;
+    image_y = 0;
 }
+
+function moveImageLeft() {
+    clearFbCanvas();
+    image_x += 20;
+    if (img.width >= img.height) {
+        ctxFb.drawImage(img, image_x, image_y, img.height, img.height, 0, 0, canvasFb.width, canvasFb.height);
+    }
+    if (img.width < img.height) {
+        ctxFb.drawImage(img, image_x, image_y, img.width, img.width, 0,0, canvasFb.width, canvasFb.height);
+    }
+}
+
+function moveImageRight() {
+    clearFbCanvas();
+    image_x -= 20;
+    if (img.width >= img.height) {
+        ctxFb.drawImage(img, image_x, image_y, img.height, img.height, 0, 0, canvasFb.width, canvasFb.height);
+    }
+    if (img.width < img.height) {
+        ctxFb.drawImage(img, image_x, image_y, img.width, img.width, 0, 0, canvasFb.width, canvasFb.height);
+    }
+}
+
+function moveImageUp() {
+    clearFbCanvas();
+    image_y += 20;
+    if (img.width >= img.height) {
+        ctxFb.drawImage(img, image_x, image_y, img.height, img.height, 0,0, canvasFb.width, canvasFb.height);
+    }
+    if (img.width < img.height) {
+        ctxFb.drawImage(img, image_x, image_y, img.width, img.width, 0, 0, canvasFb.width, canvasFb.height);
+    }
+}
+
+function moveImageDown() {
+    clearFbCanvas();
+    image_y -= 20;
+    if (img.width >= img.height) {
+        ctxFb.drawImage(img, image_x, image_y, img.height, img.height, 0, 0, canvasFb.width, canvasFb.height);
+    }
+    if (img.width < img.height) {
+        ctxFb.drawImage(img, image_x, image_y, img.width, img.width, 0, 0, canvasFb.width, canvasFb.height);
+    }
+}
+
 
 // Draw the black ribbon on the bottom:
 function drawBlackBar(blackBarRatio) {
